@@ -31,7 +31,9 @@ type FileSystem struct {
 var _ billy.Filesystem = &FileSystem{}
 var _ billy.Change = &FileSystem{}
 
-// New creates a FileSystem object.
+// New creates a FileSystem object based on a gRPC connection.
+// Because the Billy interface doesn't take a context, the context you pass here is used for all RPCs.
+// FileSystem conforms to billy.Filesystem.
 func New(ctx context.Context, c grpc.ClientConnInterface) *FileSystem {
 	return &FileSystem{
 		ctx:    ctx,
