@@ -28,6 +28,8 @@ type Service struct {
 
 // Callbacks are the callbacks this library needs from callers.
 type Callbacks interface {
+	// FilesystemForPeer is supposed to grab the peer from context.Context and return the filesystem you want to serve that peer; or an error code and an error.
+	// codes.Code and error are separate to force you to think about the error code.
 	FilesystemForPeer(context.Context) (billy.Filesystem, codes.Code, error)
 }
 
