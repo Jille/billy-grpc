@@ -1,5 +1,9 @@
 # billy-grpc
 
+fsserver: [![GoDoc](https://godoc.org/github.com/Jille/billy-grpc/fsserver?status.svg)](https://godoc.org/github.com/Jille/billy-grpc/fsserver)
+
+fsclient: [![GoDoc](https://godoc.org/github.com/Jille/billy-grpc/fsclient?status.svg)](https://godoc.org/github.com/Jille/billy-grpc/fsclient)
+
 The `fsclient` library provides a billy.Filesystem that talks to a gRPC server. The `fsserver` library provides a gRPC server that talks to a billy.Filesystem.
 
 This allows you to access a remote filesystem as if it were local.
