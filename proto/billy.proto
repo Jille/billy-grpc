@@ -1,0 +1,207 @@
+syntax = "proto3";
+
+import "google/protobuf/empty.proto";
+import "google/protobuf/timestamp.proto";
+import "status/status.proto";
+
+option go_package = "github.com/Jille/billy-grpc/proto";
+
+service BillyService {
+	rpc FileDescriptor(stream FileDescriptorRequest) returns (stream FileDescriptorResponse) {
+	}
+
+	rpc Stat(StatRequest) returns (StatResponse) {
+	}
+
+	rpc Rename(RenameRequest) returns (google.protobuf.Empty) {
+	}
+
+	rpc Remove(RemoveRequest) returns (google.protobuf.Empty) {
+	}
+
+	rpc ReadDir(ReadDirRequest) returns (ReadDirResponse) {
+	}
+
+	rpc MkdirAll(MkdirAllRequest) returns (google.protobuf.Empty) {
+	}
+
+	rpc Chmod(ChmodRequest) returns (google.protobuf.Empty) {
+	}
+
+	rpc Lchown(ChownRequest) returns (google.protobuf.Empty) {
+	}
+
+	rpc Chown(ChownRequest) returns (google.protobuf.Empty) {
+	}
+
+	rpc Chtimes(ChtimesRequest) returns (google.protobuf.Empty) {
+	}
+
+	rpc Lstat(StatRequest) returns (StatResponse) {
+	}
+
+	rpc Symlink(SymlinkRequest) returns (google.protobuf.Empty) {
+	}
+
+	rpc Readlink(ReadlinkRequest) returns (ReadlinkResponse) {
+	}
+}
+
+message FileDescriptorRequest {
+	// Optional. Opaque id that will be returned with the response.
+	// Can be used to pipeline multiple requests that might be answered in a different order.
+	int64 request_id = 1;
+
+	oneof request {
+		OpenRequest open = 2;
+		CloseRequest close = 3;
+		ReadRequest read = 4;
+		ReadAtRequest read_at = 5;
+		WriteRequest write = 6;
+		WriteAtRequest write_at = 7;
+		SeekRequest seek = 8;
+		LockRequest lock = 9;
+		UnlockRequest unlock = 10;
+		TruncateRequest truncate = 11;
+	}
+}
+
+message FileDescriptorResponse {
+	int64 request_id = 1;
+	google.rpc.Status status = 2;
+
+	oneof response {
+		ReadResponse read = 3;
+		WriteResponse write = 4;
+		SeekResponse seek = 5;
+	}
+}
+
+message OpenRequest {
+	string path = 1;
+	bool for_reading = 2;
+	bool for_writing = 3;
+	bool append = 4;
+	bool allow_creation = 5;
+	bool exclusive = 6;
+	bool sync = 7;
+	bool truncate = 8;
+	uint32 create_mode = 9;
+}
+
+message ReadRequest {
+	int64 size = 1;
+}
+
+message ReadAtRequest {
+	int64 offset = 1;
+	int64 size = 2;
+}
+
+message ReadResponse {
+	bytes data = 1;
+	bool eof = 2;
+}
+
+message WriteRequest {
+	bytes data = 1;
+}
+
+message WriteAtRequest {
+	int64 offset = 1;
+	bytes data = 2;
+}
+
+message WriteResponse {
+	int64 num_written = 1;
+}
+
+message SeekRequest {
+	enum Whence {
+		SEEK_START = 0;
+		SEEK_CURRENT = 1;
+		SEEK_END = 2;
+	}
+	int64 offset = 1;
+	Whence whence = 2;
+}
+
+message SeekResponse {
+	int64 offset = 1;
+}
+
+message TruncateRequest {
+	int64 size = 1;
+}
+
+message CloseRequest {
+}
+
+message LockRequest {
+}
+
+message UnlockRequest {
+}
+
+message RenameRequest {
+	string old_path = 1;
+	string new_path = 2;
+}
+
+message RemoveRequest {
+	string path = 1;
+}
+
+message MkdirAllRequest {
+	string path = 1;
+	uint32 mode = 2;
+}
+
+message ReadDirRequest {
+	string path = 1;
+}
+
+message ReadDirResponse {
+	map<string,StatResponse> entries = 1;
+}
+
+message StatRequest {
+	string path = 1;
+}
+
+message StatResponse {
+	int64 size = 1;
+	int32 mode = 2;
+	google.protobuf.Timestamp mtime = 3;
+	bool is_dir = 4;
+}
+
+message ChmodRequest {
+	string path = 1;
+	int32 mode = 2;
+}
+
+message ChownRequest {
+	string path = 1;
+	int32 uid = 2;
+	int32 gid = 3;
+}
+
+message ChtimesRequest {
+	string path = 1;
+	google.protobuf.Timestamp atime = 2;
+	google.protobuf.Timestamp mtime = 3;
+}
+
+message SymlinkRequest {
+	string target = 1;
+	string link = 2;
+}
+
+message ReadlinkRequest {
+	string path = 1;
+}
+
+message ReadlinkResponse {
+	string target = 1;
+}
