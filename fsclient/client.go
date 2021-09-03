@@ -418,12 +418,12 @@ func (i fileInfo) Sys() interface{} {
 	return i.stat
 }
 
-// TODO: Return *os.LinkError, not *os.PathError
 func (f *FileSystem) Rename(oldName, newName string) error {
 	if _, err := f.client.Rename(f.ctx, &pb.RenameRequest{
 		OldPath: oldName,
 		NewPath: newName,
 	}); err != nil {
+		// TODO: Return *os.LinkError, not *os.PathError
 		return translateRemoteError(err, "rename", oldName)
 	}
 	return nil
