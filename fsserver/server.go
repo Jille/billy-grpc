@@ -26,9 +26,6 @@ type Service struct {
 	callbacks Callbacks
 }
 
-// Peer is an opaque object representing a peer.
-type Peer interface{}
-
 // Callbacks are the callbacks this library needs from callers.
 type Callbacks interface {
 	FilesystemForPeer(context.Context) (billy.Filesystem, codes.Code, error)
