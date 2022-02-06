@@ -4,6 +4,8 @@ import "google/protobuf/empty.proto";
 import "google/protobuf/timestamp.proto";
 import "status/status.proto";
 
+package com.github.Jille.billy_grpc;
+
 option go_package = "github.com/Jille/billy-grpc/proto";
 
 service BillyService {

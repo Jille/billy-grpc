@@ -43,7 +43,7 @@ func NewBillyServiceClient(cc grpc.ClientConnInterface) BillyServiceClient {
 }
 
 func (c *billyServiceClient) FileDescriptor(ctx context.Context, opts ...grpc.CallOption) (BillyService_FileDescriptorClient, error) {
-	stream, err := c.cc.NewStream(ctx, &BillyService_ServiceDesc.Streams[0], "/BillyService/FileDescriptor", opts...)
+	stream, err := c.cc.NewStream(ctx, &BillyService_ServiceDesc.Streams[0], "/com.github.Jille.billy_grpc.BillyService/FileDescriptor", opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -75,7 +75,7 @@ func (x *billyServiceFileDescriptorClient) Recv() (*FileDescriptorResponse, erro
 
 func (c *billyServiceClient) Stat(ctx context.Context, in *StatRequest, opts ...grpc.CallOption) (*StatResponse, error) {
 	out := new(StatResponse)
-	err := c.cc.Invoke(ctx, "/BillyService/Stat", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/com.github.Jille.billy_grpc.BillyService/Stat", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -84,7 +84,7 @@ func (c *billyServiceClient) Stat(ctx context.Context, in *StatRequest, opts ...
 
 func (c *billyServiceClient) Rename(ctx context.Context, in *RenameRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
 	out := new(emptypb.Empty)
-	err := c.cc.Invoke(ctx, "/BillyService/Rename", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/com.github.Jille.billy_grpc.BillyService/Rename", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -93,7 +93,7 @@ func (c *billyServiceClient) Rename(ctx context.Context, in *RenameRequest, opts
 
 func (c *billyServiceClient) Remove(ctx context.Context, in *RemoveRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
 	out := new(emptypb.Empty)
-	err := c.cc.Invoke(ctx, "/BillyService/Remove", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/com.github.Jille.billy_grpc.BillyService/Remove", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -102,7 +102,7 @@ func (c *billyServiceClient) Remove(ctx context.Context, in *RemoveRequest, opts
 
 func (c *billyServiceClient) ReadDir(ctx context.Context, in *ReadDirRequest, opts ...grpc.CallOption) (*ReadDirResponse, error) {
 	out := new(ReadDirResponse)
-	err := c.cc.Invoke(ctx, "/BillyService/ReadDir", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/com.github.Jille.billy_grpc.BillyService/ReadDir", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -111,7 +111,7 @@ func (c *billyServiceClient) ReadDir(ctx context.Context, in *ReadDirRequest, op
 
 func (c *billyServiceClient) MkdirAll(ctx context.Context, in *MkdirAllRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
 	out := new(emptypb.Empty)
-	err := c.cc.Invoke(ctx, "/BillyService/MkdirAll", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/com.github.Jille.billy_grpc.BillyService/MkdirAll", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -120,7 +120,7 @@ func (c *billyServiceClient) MkdirAll(ctx context.Context, in *MkdirAllRequest, 
 
 func (c *billyServiceClient) Chmod(ctx context.Context, in *ChmodRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
 	out := new(emptypb.Empty)
-	err := c.cc.Invoke(ctx, "/BillyService/Chmod", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/com.github.Jille.billy_grpc.BillyService/Chmod", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -129,7 +129,7 @@ func (c *billyServiceClient) Chmod(ctx context.Context, in *ChmodRequest, opts .
 
 func (c *billyServiceClient) Lchown(ctx context.Context, in *ChownRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
 	out := new(emptypb.Empty)
-	err := c.cc.Invoke(ctx, "/BillyService/Lchown", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/com.github.Jille.billy_grpc.BillyService/Lchown", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -138,7 +138,7 @@ func (c *billyServiceClient) Lchown(ctx context.Context, in *ChownRequest, opts 
 
 func (c *billyServiceClient) Chown(ctx context.Context, in *ChownRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
 	out := new(emptypb.Empty)
-	err := c.cc.Invoke(ctx, "/BillyService/Chown", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/com.github.Jille.billy_grpc.BillyService/Chown", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -147,7 +147,7 @@ func (c *billyServiceClient) Chown(ctx context.Context, in *ChownRequest, opts .
 
 func (c *billyServiceClient) Chtimes(ctx context.Context, in *ChtimesRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
 	out := new(emptypb.Empty)
-	err := c.cc.Invoke(ctx, "/BillyService/Chtimes", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/com.github.Jille.billy_grpc.BillyService/Chtimes", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -156,7 +156,7 @@ func (c *billyServiceClient) Chtimes(ctx context.Context, in *ChtimesRequest, op
 
 func (c *billyServiceClient) Lstat(ctx context.Context, in *StatRequest, opts ...grpc.CallOption) (*StatResponse, error) {
 	out := new(StatResponse)
-	err := c.cc.Invoke(ctx, "/BillyService/Lstat", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/com.github.Jille.billy_grpc.BillyService/Lstat", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -165,7 +165,7 @@ func (c *billyServiceClient) Lstat(ctx context.Context, in *StatRequest, opts ..
 
 func (c *billyServiceClient) Symlink(ctx context.Context, in *SymlinkRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
 	out := new(emptypb.Empty)
-	err := c.cc.Invoke(ctx, "/BillyService/Symlink", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/com.github.Jille.billy_grpc.BillyService/Symlink", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -174,7 +174,7 @@ func (c *billyServiceClient) Symlink(ctx context.Context, in *SymlinkRequest, op
 
 func (c *billyServiceClient) Readlink(ctx context.Context, in *ReadlinkRequest, opts ...grpc.CallOption) (*ReadlinkResponse, error) {
 	out := new(ReadlinkResponse)
-	err := c.cc.Invoke(ctx, "/BillyService/Readlink", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/com.github.Jille.billy_grpc.BillyService/Readlink", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -293,7 +293,7 @@ func _BillyService_Stat_Handler(srv interface{}, ctx context.Context, dec func(i
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/BillyService/Stat",
+		FullMethod: "/com.github.Jille.billy_grpc.BillyService/Stat",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(BillyServiceServer).Stat(ctx, req.(*StatRequest))
@@ -311,7 +311,7 @@ func _BillyService_Rename_Handler(srv interface{}, ctx context.Context, dec func
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/BillyService/Rename",
+		FullMethod: "/com.github.Jille.billy_grpc.BillyService/Rename",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(BillyServiceServer).Rename(ctx, req.(*RenameRequest))
@@ -329,7 +329,7 @@ func _BillyService_Remove_Handler(srv interface{}, ctx context.Context, dec func
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/BillyService/Remove",
+		FullMethod: "/com.github.Jille.billy_grpc.BillyService/Remove",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(BillyServiceServer).Remove(ctx, req.(*RemoveRequest))
@@ -347,7 +347,7 @@ func _BillyService_ReadDir_Handler(srv interface{}, ctx context.Context, dec fun
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/BillyService/ReadDir",
+		FullMethod: "/com.github.Jille.billy_grpc.BillyService/ReadDir",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(BillyServiceServer).ReadDir(ctx, req.(*ReadDirRequest))
@@ -365,7 +365,7 @@ func _BillyService_MkdirAll_Handler(srv interface{}, ctx context.Context, dec fu
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/BillyService/MkdirAll",
+		FullMethod: "/com.github.Jille.billy_grpc.BillyService/MkdirAll",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(BillyServiceServer).MkdirAll(ctx, req.(*MkdirAllRequest))
@@ -383,7 +383,7 @@ func _BillyService_Chmod_Handler(srv interface{}, ctx context.Context, dec func(
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/BillyService/Chmod",
+		FullMethod: "/com.github.Jille.billy_grpc.BillyService/Chmod",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(BillyServiceServer).Chmod(ctx, req.(*ChmodRequest))
@@ -401,7 +401,7 @@ func _BillyService_Lchown_Handler(srv interface{}, ctx context.Context, dec func
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/BillyService/Lchown",
+		FullMethod: "/com.github.Jille.billy_grpc.BillyService/Lchown",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(BillyServiceServer).Lchown(ctx, req.(*ChownRequest))
@@ -419,7 +419,7 @@ func _BillyService_Chown_Handler(srv interface{}, ctx context.Context, dec func(
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/BillyService/Chown",
+		FullMethod: "/com.github.Jille.billy_grpc.BillyService/Chown",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(BillyServiceServer).Chown(ctx, req.(*ChownRequest))
@@ -437,7 +437,7 @@ func _BillyService_Chtimes_Handler(srv interface{}, ctx context.Context, dec fun
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/BillyService/Chtimes",
+		FullMethod: "/com.github.Jille.billy_grpc.BillyService/Chtimes",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(BillyServiceServer).Chtimes(ctx, req.(*ChtimesRequest))
@@ -455,7 +455,7 @@ func _BillyService_Lstat_Handler(srv interface{}, ctx context.Context, dec func(
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/BillyService/Lstat",
+		FullMethod: "/com.github.Jille.billy_grpc.BillyService/Lstat",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(BillyServiceServer).Lstat(ctx, req.(*StatRequest))
@@ -473,7 +473,7 @@ func _BillyService_Symlink_Handler(srv interface{}, ctx context.Context, dec fun
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/BillyService/Symlink",
+		FullMethod: "/com.github.Jille.billy_grpc.BillyService/Symlink",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(BillyServiceServer).Symlink(ctx, req.(*SymlinkRequest))
@@ -491,7 +491,7 @@ func _BillyService_Readlink_Handler(srv interface{}, ctx context.Context, dec fu
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/BillyService/Readlink",
+		FullMethod: "/com.github.Jille.billy_grpc.BillyService/Readlink",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(BillyServiceServer).Readlink(ctx, req.(*ReadlinkRequest))
@@ -503,7 +503,7 @@ func _BillyService_Readlink_Handler(srv interface{}, ctx context.Context, dec fu
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
 var BillyService_ServiceDesc = grpc.ServiceDesc{
-	ServiceName: "BillyService",
+	ServiceName: "com.github.Jille.billy_grpc.BillyService",
 	HandlerType: (*BillyServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
