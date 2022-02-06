@@ -4,10 +4,10 @@ package proto
 
 import (
 	context "context"
-	empty "github.com/golang/protobuf/ptypes/empty"
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
 	status "google.golang.org/grpc/status"
+	emptypb "google.golang.org/protobuf/types/known/emptypb"
 )
 
 // This is a compile-time assertion to ensure that this generated file
@@ -21,16 +21,16 @@ const _ = grpc.SupportPackageIsVersion7
 type BillyServiceClient interface {
 	FileDescriptor(ctx context.Context, opts ...grpc.CallOption) (BillyService_FileDescriptorClient, error)
 	Stat(ctx context.Context, in *StatRequest, opts ...grpc.CallOption) (*StatResponse, error)
-	Rename(ctx context.Context, in *RenameRequest, opts ...grpc.CallOption) (*empty.Empty, error)
-	Remove(ctx context.Context, in *RemoveRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	Rename(ctx context.Context, in *RenameRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
+	Remove(ctx context.Context, in *RemoveRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	ReadDir(ctx context.Context, in *ReadDirRequest, opts ...grpc.CallOption) (*ReadDirResponse, error)
-	MkdirAll(ctx context.Context, in *MkdirAllRequest, opts ...grpc.CallOption) (*empty.Empty, error)
-	Chmod(ctx context.Context, in *ChmodRequest, opts ...grpc.CallOption) (*empty.Empty, error)
-	Lchown(ctx context.Context, in *ChownRequest, opts ...grpc.CallOption) (*empty.Empty, error)
-	Chown(ctx context.Context, in *ChownRequest, opts ...grpc.CallOption) (*empty.Empty, error)
-	Chtimes(ctx context.Context, in *ChtimesRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	MkdirAll(ctx context.Context, in *MkdirAllRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
+	Chmod(ctx context.Context, in *ChmodRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
+	Lchown(ctx context.Context, in *ChownRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
+	Chown(ctx context.Context, in *ChownRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
+	Chtimes(ctx context.Context, in *ChtimesRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	Lstat(ctx context.Context, in *StatRequest, opts ...grpc.CallOption) (*StatResponse, error)
-	Symlink(ctx context.Context, in *SymlinkRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	Symlink(ctx context.Context, in *SymlinkRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	Readlink(ctx context.Context, in *ReadlinkRequest, opts ...grpc.CallOption) (*ReadlinkResponse, error)
 }
 
@@ -82,8 +82,8 @@ func (c *billyServiceClient) Stat(ctx context.Context, in *StatRequest, opts ...
 	return out, nil
 }
 
-func (c *billyServiceClient) Rename(ctx context.Context, in *RenameRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *billyServiceClient) Rename(ctx context.Context, in *RenameRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/BillyService/Rename", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -91,8 +91,8 @@ func (c *billyServiceClient) Rename(ctx context.Context, in *RenameRequest, opts
 	return out, nil
 }
 
-func (c *billyServiceClient) Remove(ctx context.Context, in *RemoveRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *billyServiceClient) Remove(ctx context.Context, in *RemoveRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/BillyService/Remove", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -109,8 +109,8 @@ func (c *billyServiceClient) ReadDir(ctx context.Context, in *ReadDirRequest, op
 	return out, nil
 }
 
-func (c *billyServiceClient) MkdirAll(ctx context.Context, in *MkdirAllRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *billyServiceClient) MkdirAll(ctx context.Context, in *MkdirAllRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/BillyService/MkdirAll", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -118,8 +118,8 @@ func (c *billyServiceClient) MkdirAll(ctx context.Context, in *MkdirAllRequest, 
 	return out, nil
 }
 
-func (c *billyServiceClient) Chmod(ctx context.Context, in *ChmodRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *billyServiceClient) Chmod(ctx context.Context, in *ChmodRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/BillyService/Chmod", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -127,8 +127,8 @@ func (c *billyServiceClient) Chmod(ctx context.Context, in *ChmodRequest, opts .
 	return out, nil
 }
 
-func (c *billyServiceClient) Lchown(ctx context.Context, in *ChownRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *billyServiceClient) Lchown(ctx context.Context, in *ChownRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/BillyService/Lchown", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -136,8 +136,8 @@ func (c *billyServiceClient) Lchown(ctx context.Context, in *ChownRequest, opts 
 	return out, nil
 }
 
-func (c *billyServiceClient) Chown(ctx context.Context, in *ChownRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *billyServiceClient) Chown(ctx context.Context, in *ChownRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/BillyService/Chown", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -145,8 +145,8 @@ func (c *billyServiceClient) Chown(ctx context.Context, in *ChownRequest, opts .
 	return out, nil
 }
 
-func (c *billyServiceClient) Chtimes(ctx context.Context, in *ChtimesRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *billyServiceClient) Chtimes(ctx context.Context, in *ChtimesRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/BillyService/Chtimes", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -163,8 +163,8 @@ func (c *billyServiceClient) Lstat(ctx context.Context, in *StatRequest, opts ..
 	return out, nil
 }
 
-func (c *billyServiceClient) Symlink(ctx context.Context, in *SymlinkRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *billyServiceClient) Symlink(ctx context.Context, in *SymlinkRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/BillyService/Symlink", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -187,16 +187,16 @@ func (c *billyServiceClient) Readlink(ctx context.Context, in *ReadlinkRequest, 
 type BillyServiceServer interface {
 	FileDescriptor(BillyService_FileDescriptorServer) error
 	Stat(context.Context, *StatRequest) (*StatResponse, error)
-	Rename(context.Context, *RenameRequest) (*empty.Empty, error)
-	Remove(context.Context, *RemoveRequest) (*empty.Empty, error)
+	Rename(context.Context, *RenameRequest) (*emptypb.Empty, error)
+	Remove(context.Context, *RemoveRequest) (*emptypb.Empty, error)
 	ReadDir(context.Context, *ReadDirRequest) (*ReadDirResponse, error)
-	MkdirAll(context.Context, *MkdirAllRequest) (*empty.Empty, error)
-	Chmod(context.Context, *ChmodRequest) (*empty.Empty, error)
-	Lchown(context.Context, *ChownRequest) (*empty.Empty, error)
-	Chown(context.Context, *ChownRequest) (*empty.Empty, error)
-	Chtimes(context.Context, *ChtimesRequest) (*empty.Empty, error)
+	MkdirAll(context.Context, *MkdirAllRequest) (*emptypb.Empty, error)
+	Chmod(context.Context, *ChmodRequest) (*emptypb.Empty, error)
+	Lchown(context.Context, *ChownRequest) (*emptypb.Empty, error)
+	Chown(context.Context, *ChownRequest) (*emptypb.Empty, error)
+	Chtimes(context.Context, *ChtimesRequest) (*emptypb.Empty, error)
 	Lstat(context.Context, *StatRequest) (*StatResponse, error)
-	Symlink(context.Context, *SymlinkRequest) (*empty.Empty, error)
+	Symlink(context.Context, *SymlinkRequest) (*emptypb.Empty, error)
 	Readlink(context.Context, *ReadlinkRequest) (*ReadlinkResponse, error)
 	mustEmbedUnimplementedBillyServiceServer()
 }
@@ -211,34 +211,34 @@ func (UnimplementedBillyServiceServer) FileDescriptor(BillyService_FileDescripto
 func (UnimplementedBillyServiceServer) Stat(context.Context, *StatRequest) (*StatResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Stat not implemented")
 }
-func (UnimplementedBillyServiceServer) Rename(context.Context, *RenameRequest) (*empty.Empty, error) {
+func (UnimplementedBillyServiceServer) Rename(context.Context, *RenameRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Rename not implemented")
 }
-func (UnimplementedBillyServiceServer) Remove(context.Context, *RemoveRequest) (*empty.Empty, error) {
+func (UnimplementedBillyServiceServer) Remove(context.Context, *RemoveRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Remove not implemented")
 }
 func (UnimplementedBillyServiceServer) ReadDir(context.Context, *ReadDirRequest) (*ReadDirResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ReadDir not implemented")
 }
-func (UnimplementedBillyServiceServer) MkdirAll(context.Context, *MkdirAllRequest) (*empty.Empty, error) {
+func (UnimplementedBillyServiceServer) MkdirAll(context.Context, *MkdirAllRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method MkdirAll not implemented")
 }
-func (UnimplementedBillyServiceServer) Chmod(context.Context, *ChmodRequest) (*empty.Empty, error) {
+func (UnimplementedBillyServiceServer) Chmod(context.Context, *ChmodRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Chmod not implemented")
 }
-func (UnimplementedBillyServiceServer) Lchown(context.Context, *ChownRequest) (*empty.Empty, error) {
+func (UnimplementedBillyServiceServer) Lchown(context.Context, *ChownRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Lchown not implemented")
 }
-func (UnimplementedBillyServiceServer) Chown(context.Context, *ChownRequest) (*empty.Empty, error) {
+func (UnimplementedBillyServiceServer) Chown(context.Context, *ChownRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Chown not implemented")
 }
-func (UnimplementedBillyServiceServer) Chtimes(context.Context, *ChtimesRequest) (*empty.Empty, error) {
+func (UnimplementedBillyServiceServer) Chtimes(context.Context, *ChtimesRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Chtimes not implemented")
 }
 func (UnimplementedBillyServiceServer) Lstat(context.Context, *StatRequest) (*StatResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Lstat not implemented")
 }
-func (UnimplementedBillyServiceServer) Symlink(context.Context, *SymlinkRequest) (*empty.Empty, error) {
+func (UnimplementedBillyServiceServer) Symlink(context.Context, *SymlinkRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Symlink not implemented")
 }
 func (UnimplementedBillyServiceServer) Readlink(context.Context, *ReadlinkRequest) (*ReadlinkResponse, error) {
