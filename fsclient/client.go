@@ -48,6 +48,7 @@ type fileDescriptor struct {
 	mtx                 sync.Mutex
 	nextId              int64
 	outstandingRequests map[int64]chan fileDescriptorResponse
+	closing             bool
 }
 
 type fileDescriptorResponse struct {
@@ -182,7 +183,7 @@ func (h *fileDescriptor) Name() string {
 func (h *fileDescriptor) receiver() {
 	h.mtx.Lock()
 	defer h.mtx.Unlock()
-	for len(h.outstandingRequests) > 0 {
+	for len(h.outstandingRequests) > 0 || h.closing {
 		h.mtx.Unlock()
 		msg, err := h.stream.Recv()
 		h.mtx.Lock()
@@ -196,6 +197,7 @@ func (h *fileDescriptor) receiver() {
 		ch, ok := h.outstandingRequests[msg.GetRequestId()]
 		if !ok {
 			// That shouldn't happen.
+			// TODO: It does actually happen for the initial open request. We can safely ignore that though.
 			continue
 		}
 		ch <- fileDescriptorResponse{
@@ -234,11 +236,18 @@ func (h *fileDescriptor) send(req *pb.FileDescriptorRequest) (*pb.FileDescriptor
 }
 
 func (h *fileDescriptor) Close() error {
+	h.mtx.Lock()
+	// This causes the receiver thread to keep running until the stream actually closes.
+	h.closing = true
+	h.mtx.Unlock()
 	_, err := h.send(&pb.FileDescriptorRequest{
 		Request: &pb.FileDescriptorRequest_Close{
 			Close: &pb.CloseRequest{},
 		},
 	})
+	h.sendMtx.Lock()
+	_ = h.stream.CloseSend()
+	h.sendMtx.Unlock()
 	return h.translateRemoteError(err, "close")
 }
 

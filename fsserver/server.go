@@ -151,6 +151,9 @@ func (s *Service) FileDescriptor(stream pb.BillyService_FileDescriptorServer) er
 		msg, err := stream.Recv()
 		if err != nil {
 			fh.Close()
+			if err == io.EOF {
+				return nil
+			}
 			return err
 		}
 		op := fileDescriptorOp{fh, &writeLock}
