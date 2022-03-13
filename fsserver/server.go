@@ -339,7 +339,7 @@ func (s *Service) ReadDir(ctx context.Context, req *pb.ReadDirRequest) (*pb.Read
 	}
 	des, err := fs.ReadDir(req.GetPath())
 	if err != nil {
-		return nil, err
+		return nil, billyToGRPCError(err)
 	}
 	ret := &pb.ReadDirResponse{
 		Entries: make(map[string]*pb.StatResponse, len(des)),
@@ -448,7 +448,7 @@ func (s *Service) Readlink(ctx context.Context, req *pb.ReadlinkRequest) (*pb.Re
 	if sfs, ok := fs.(billy.Symlink); ok {
 		target, err := sfs.Readlink(req.GetPath())
 		if err != nil {
-			return nil, err
+			return nil, billyToGRPCError(err)
 		}
 		return &pb.ReadlinkResponse{
 			Target: target,
