@@ -169,6 +169,14 @@ func (f *FileSystem) open(req *pb.OpenRequest) (billy.File, error) {
 	}); err != nil {
 		return nil, translateRemoteError(err, "open", req.GetPath())
 	}
+	msg, err := stream.Recv()
+	if err != nil {
+		return nil, translateRemoteError(err, "open", req.GetPath())
+	}
+	if err := status.ErrorProto(msg.GetStatus()); err != nil {
+		_ = stream.CloseSend()
+		return nil, translateRemoteError(err, "open", req.GetPath())
+	}
 	return &fileDescriptor{
 		name:                req.GetPath(),
 		stream:              stream,
@@ -197,7 +205,6 @@ func (h *fileDescriptor) receiver() {
 		ch, ok := h.outstandingRequests[msg.GetRequestId()]
 		if !ok {
 			// That shouldn't happen.
-			// TODO: It does actually happen for the initial open request. We can safely ignore that though.
 			continue
 		}
 		ch <- fileDescriptorResponse{
