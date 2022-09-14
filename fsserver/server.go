@@ -8,7 +8,6 @@ import (
 	"os"
 	"sync"
 
-	pb "github.com/Jille/billy-grpc/proto"
 	"github.com/go-git/go-billy/v5"
 	"github.com/golang/protobuf/ptypes/empty"
 	spb "google.golang.org/genproto/googleapis/rpc/status"
@@ -16,6 +15,8 @@ import (
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
 	"google.golang.org/protobuf/types/known/timestamppb"
+
+	pb "github.com/Jille/billy-grpc/proto"
 )
 
 // Service implements pb.BillyServiceServer and can be registered with a grpc.Server.
@@ -24,6 +25,14 @@ type Service struct {
 	pb.UnsafeBillyServiceServer
 
 	callbacks Callbacks
+}
+
+// CallbacksFunc is a function having the Callbacks' FilesystemForPeer signature and implements the Callbacks interface.
+type CallbacksFunc func(ctx context.Context) (billy.Filesystem, codes.Code, error)
+
+// FilesystemForPeer implements the Callbacks interface.
+func (f CallbacksFunc) FilesystemForPeer(ctx context.Context) (billy.Filesystem, codes.Code, error) {
+	return f(ctx)
 }
 
 // Callbacks are the callbacks this library needs from callers.
